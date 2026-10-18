@@ -1,0 +1,8 @@
+Model Information:
+* title:	[Cake-ya-san] Chocolate Cupcake
+* source:	https://sketchfab.com/3d-models/cake-ya-san-chocolate-cupcake-c3dbdd1b28ac4e34a79bfe67ae0738d9
+* author:	StarlightLambda64 (https://sketchfab.com/Starlight_lambda64)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

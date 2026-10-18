@@ -1,0 +1,8 @@
+Model Information:
+* title:	[Genshin Impact] Aranara Flower Crown
+* source:	https://sketchfab.com/3d-models/genshin-impact-aranara-flower-crown-2a19111adba946a89233a660faae5512
+* author:	StarlightLambda64 (https://sketchfab.com/Starlight_lambda64)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works

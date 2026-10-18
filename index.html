@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Laberinto del Jardín de las Hadas</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #0b1a10; font-family: system-ui, sans-serif; }
+    canvas { display: block; }
+
+    #hud { position: fixed; top: 12px; left: 12px; color: #fff; background: #0008; padding: 8px 12px; border-radius: 8px; font-size: 14px; }
+
+
+    #scorebar {
+      position: fixed; top: 12px; left: 50%; transform: translateX(-50%);
+      display: flex; gap: 14px; align-items: center;
+      color: #fff; background: #0009; padding: 8px 20px; border-radius: 999px;
+      font-size: 18px; font-weight: 600; letter-spacing: 0.5px;
+      pointer-events: none; white-space: nowrap;
+    }
+    #time { min-width: 88px; display: inline-block; font-variant-numeric: tabular-nums; }
+    #time.danger { color: #ff6b81; animation: pulse 1s infinite; }
+    @keyframes pulse { 50% { transform: scale(1.12); } }
+
+
+    #toast {
+      position: fixed; top: 64px; left: 50%; transform: translateX(-50%);
+      color: #ffe9a8; font-size: 22px; font-weight: 700; text-shadow: 0 2px 6px #000;
+      opacity: 0; transition: opacity 0.25s; pointer-events: none; text-align: center;
+    }
+
+    #overlay {
+      position: fixed; inset: 0; display: none; align-items: center; justify-content: center;
+      background: rgba(60, 30, 70, 0.55); backdrop-filter: blur(4px); z-index: 9000;
+    }
+    #result {
+      background: linear-gradient(160deg, #fff4fa, #efe6ff); color: #4a2c5a; border-radius: 24px;
+      padding: 30px 40px; min-width: 340px; max-width: 90vw; text-align: center;
+      box-shadow: 0 12px 40px #0006; font-size: 18px;
+    }
+    #result-title { font-size: 36px; font-weight: 800; margin-bottom: 6px; }
+    #result-sub { margin-bottom: 18px; opacity: 0.85; }
+    #result-rows { text-align: left; border-top: 2px solid #e6d3f3; border-bottom: 2px solid #e6d3f3; padding: 10px 0; margin-bottom: 14px; }
+    .row { display: flex; justify-content: space-between; gap: 32px; margin: 6px 0; }
+    #final-score { font-size: 26px; }
+    #record { margin-bottom: 18px; font-weight: 700; }
+    #restart {
+      background: #ff8fc8; color: #fff; border: 0; border-radius: 999px;
+      padding: 12px 28px; font-size: 18px; font-weight: 700; cursor: pointer; transition: transform 0.15s;
+    }
+    #restart:hover { transform: scale(1.05); }
+  </style>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <div id="hud"><b>W/S</b> avanzar · <b>A/D</b> girar · <b>V</b> cámara 1ª/3ª persona · <b>M</b> minimapa local/completo</div>
+
+  <div id="scorebar"><span id="time"></span><span id="score"></span></div>
+  <div id="toast"></div>
+
+  <div id="overlay">
+    <div id="result">
+      <div id="result-title"></div>
+      <div id="result-sub"></div>
+      <div id="result-rows">
+        <div class="row"><span id="items-label"></span><b id="items-points"></b></div>
+        <div class="row" id="bonus-row"><span>Bonus de tiempo</span><b id="bonus"></b></div>
+        <div class="row"><span>Puntuación total</span><b id="final-score"></b></div>
+      </div>
+      <div id="record"></div>
+      <button id="restart">Jugar de nuevo (R)</button>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

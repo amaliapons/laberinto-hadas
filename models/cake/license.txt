@@ -1,0 +1,8 @@
+Model Information:
+* title:	Simple cake
+* source:	https://sketchfab.com/3d-models/simple-cake-ffd9a93d00b74982a138757689d684d9
+* author:	SlowPokeCat (https://sketchfab.com/Slowpokecat)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
