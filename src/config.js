@@ -1,5 +1,5 @@
 export const CONFIG = {
-  CELL_SIZE: 4,
+  CELL_SIZE: 3,
   WALL_HEIGHT: 2.5,
   OBJECT_FLOAT_HEIGHT: 1.2,
   PLAYER_EYE_HEIGHT: 1.4,
