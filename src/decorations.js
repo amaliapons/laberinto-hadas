@@ -118,14 +118,7 @@ const TYPE_DEFS = [
 
 const WALL_DIRS = [[1, 0], [-1, 0], [0, 1], [0, -1]];
 
-/**
- * Crea el grupo con toda la decoración estática del laberinto.
- * - Cada tipo se dibuja con un único InstancedMesh (pocas draw calls).
- * - Se colocan junto a las paredes y en las esquinas de las casillas libres, evitando
- *   la casilla de inicio y las de los objetos mágicos, para no tapar el recorrido.
- * - No pertenecen al grupo de paredes, así que no afectan a colisiones ni a la cámara,
- *   y al estar en la capa 0 no aparecen en el minimapa (que solo dibuja la capa 1).
- */
+
 export function createDecorations(map = MAZE_MAP) {
   const rand = mulberry32(DECORATION.SEED);
   const half = CONFIG.CELL_SIZE / 2;
