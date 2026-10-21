@@ -1,6 +1,6 @@
 export const CONFIG = {
   CELL_SIZE: 4,
-  WALL_HEIGHT: 3,
+  WALL_HEIGHT: 2.5,
   OBJECT_FLOAT_HEIGHT: 1.2,
   PLAYER_EYE_HEIGHT: 1.4,
 };
@@ -37,7 +37,7 @@ export const MAZE_MAP = [
   '#.#####.###.#.#',
   '#...#.....#...#',
   '###.#.###.#.###',
-  '#...#.#...#...#',
+  '#...#.#L..#...#',
   '#.###.#.###.#.#',
   '#.....#...#.#.#',
   '#.#####.#.#.#.#',
@@ -53,7 +53,7 @@ export const MODELS = {
   crown:    { path: 'models/crown/scene.gltf',    size: 1.0 },
   cupcake:  { path: 'models/cupcake/scene.gltf',  size: 0.9 },
   hibiscus: { path: 'models/hibiscus/scene.gltf', size: 1.0 },
-  //lotus:    { path: 'models/lotus/scene.gltf',    size: 1.0 }, //lo quito porque pesa mucho
+  //lotus:    { path: 'models/lotus/scene.gltf',    size: 1.0 },
   potion:   { path: 'models/potion/scene.gltf',   size: 0.9 },
 };
 
@@ -62,7 +62,7 @@ export const COLLECTIBLES = {
   C: { label: 'super tarta', type: 'cake',     points: 20, glow: 0xffd37a },
   R: { label: 'corona mágica de flores', type: 'crown',    points: 50, glow: 0xffe14d },
   H: { label: 'florecita', type: 'hibiscus', points: 15, glow: 0xff5e7e },
-  L: { label: 'flor de loto', type: 'lotus',    points: 15, glow: 0xc9a6ff },
+  //L: { label: 'flor de loto', type: 'lotus',    points: 15, glow: 0xc9a6ff },
   P: { label: 'poción mágica', type: 'potion',   points: 30, glow: 0x6be6ff },
 };
 
@@ -72,8 +72,15 @@ export const COLLECTIBLE = {
   SPIN_SPEED: 1.2,
   PICKUP_RADIUS: 1.0,
   COLLECT_TIME: 1.5,
-  GLOW_BASE: 5.0,
-  GLOW_PULSE: 1.0,
+  GLOW_BASE: 15.0,
+  GLOW_PULSE: 2.0,
+};
+
+export const DECORATION = {
+  SEED: 20260,// de momento misma decoración en cada partida
+  DENSITY: 0.8,
+  DOUBLE_CHANCE: 0.3,
+  LANTERN_MAX: 8,
 };
 
 export const FAIRY_ANIM = {
@@ -83,8 +90,37 @@ export const FAIRY_ANIM = {
 };
 
 export const TEXTURES = {
-  WALL: 'textures/muro.png',
+  WALLS: [
+    'textures/muro.png',
+    'textures/muro2.jpeg',
+    'textures/muro3.jpeg',
+    'textures/muro4.jpeg',
+  ],
+  WALL_SEED: 7,
   FLOOR: 'textures/suelo.png',
+};
+
+export const SKY = {
+  PATH: 'textures/skybox-morning.png',
+  HORIZON_COLOR: 0xb1c5f2,
+  MINIMAP_BACKGROUND: 0x9ad7ff,
+  BRIGHTNESS: 1,
+};
+
+export const LIGHTING = {
+  HEMI_INTENSITY: 0.3,
+  SUN_INTENSITY: 0.6,
+  MINIMAP_HEMI: 0.9,
+};
+
+export const GENERATOR = {
+  SEED: null,
+  LOOP_CHANCE: 0.12,
+  MIN_START_DISTANCE: 8,
+  MIN_ITEM_SPACING: 6,
+  MIN_TIME_FRACTION: 0.3,
+  MAX_TIME_FRACTION: 0.6,
+  MAX_ATTEMPTS: 500,
 };
 
 export const GAME = {

@@ -30,10 +30,10 @@ export class PlayerController {
     return this.isPressed('KeyW', 'KeyA', 'KeyS', 'KeyD', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight');
   }
 
-  reset(position) {
+  reset(position, rotationY = 0) {
     this.player.position.copy(position);
-    this.rotationY = 0;
-    this.player.rotation.y = 0;
+    this.rotationY = rotationY;
+    this.player.rotation.y = rotationY;
     this.moveInput = 0;
   }
 

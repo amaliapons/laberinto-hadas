@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { CONFIG, CAMERA, MINIMAP } from './config.js';
+import { CONFIG, CAMERA, MINIMAP, SKY } from './config.js';
 
 const _puntoDeEnfoque = new THREE.Vector3();
 const _posicionIdealCamara = new THREE.Vector3();
@@ -21,8 +21,8 @@ export class Camera {
     this.mode = this.mode === 'third' ? 'first' : 'third'; 
   }
 
-  reset() { 
-    this.rotationY = 0; 
+  reset(rotationY = 0) { 
+    this.rotationY = rotationY; 
   }
 
   setAspect(aspectRatio) { 
@@ -75,6 +75,7 @@ export class Minimap {
     this.player = player;
     this.worldSpan = worldSpan;
     this.localMode = true;
+    this.background = new THREE.Color(SKY.MINIMAP_BACKGROUND);
 
     this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 200);
 
@@ -133,6 +134,8 @@ export class Minimap {
     const { SIZE, MARGIN } = MINIMAP;
     const fog = this.scene.fog;
     const { near, far } = fog;
+    const background = this.scene.background;
+    this.scene.background = this.background;
     fog.near = 1e5; //infintito para que no se vea nada
     fog.far = 1e6;
 
@@ -145,5 +148,6 @@ export class Minimap {
 
     r.setScissorTest(false);
     fog.near = near; fog.far = far;
+    this.scene.background = background;
   }
 }

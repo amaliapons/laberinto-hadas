@@ -20,6 +20,10 @@ export async function loadModel({ path, size }, { verticalAlign = 'center' } = {
     -modelCenter.z * scaleFactor
   );
 
+  model.traverse((obj) => {
+    if (obj.isMesh) obj.castShadow = obj.receiveShadow = true;
+  });
+
   const wrapperGroup = new THREE.Group();
   wrapperGroup.add(model);
   return wrapperGroup;

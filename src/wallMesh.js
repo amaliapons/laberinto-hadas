@@ -1,12 +1,14 @@
-export function buildWallArrays(map, cellSize, height) {
+export function buildWallArrays(map, cellSize, height, variantCount = 1, variantFor = () => 0) {
   const rows = map.length, cols = map[0].length;
   const halfSize = cellSize / 2;
   const isWall = (r, c) => r < 0 || c < 0 || r >= rows || c >= cols || map[r][c] === '#'; //para no dibujar donde no se ve
 
   const uvHeightRatio = height / cellSize;
 
-  const positions = [], normals = [], uvs = [], indices = [];
-
+  const positions = [], normals = [], uvs = [];
+  const indicesByVariant = Array.from({ length: variantCount }, () => []);
+  let indices = indicesByVariant[0]; 
+  
 
   function quad(v1, v2, v3, v4, normalVector, vCoord) {
     const base = positions.length / 3;
@@ -20,6 +22,7 @@ export function buildWallArrays(map, cellSize, height) {
       if (map[r][c] !== '#') continue;
       const centerX = (c - cols / 2 + 0.5) * cellSize;
       const centerZ = (r - rows / 2 + 0.5) * cellSize;
+      indices = indicesByVariant[variantFor(r, c)];
       const x0 = centerX - halfSize, x1 = centerX + halfSize, z0 = centerZ - halfSize, z1 = centerZ + halfSize, H = height;
 
       if (!isWall(r, c + 1)) quad([x1, 0, z1], [x1, 0, z0], [x1, H, z0], [x1, H, z1], [1, 0, 0], uvHeightRatio);
@@ -29,5 +32,13 @@ export function buildWallArrays(map, cellSize, height) {
       quad([x0, H, z1], [x1, H, z1], [x1, H, z0], [x0, H, z0], [0, 1, 0], 1);  
     }
   }
-  return { positions, normals, uvs, indices };
+
+
+  const allIndices = [], groups = [];
+  indicesByVariant.forEach((list, materialIndex) => {
+    if (list.length === 0) return;
+    groups.push({ start: allIndices.length, count: list.length, materialIndex });
+    for (const i of list) allIndices.push(i);
+  });
+  return { positions, normals, uvs, indices: allIndices, groups };
 }
